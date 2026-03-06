@@ -20,6 +20,16 @@ collections:
           - {label: "Button Link", name: "button_link", widget: "string"}
           - {label: "Hero Image", name: "hero_image", widget: "image"}
           - {label: "Body", name: "body", widget: "markdown"}
+      - name: "about"
+        label: "About Page"
+        file: "src/content/about.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Subtitle", name: "subtitle", widget: "string"}
+          - {label: "Description", name: "description", widget: "text"}
+          - {label: "About Image", name: "about_image", widget: "image"}
+          - {label: "About Video", name: "about_video", widget: "video"}
+          - {label: "Body", name: "body", widget: "markdown"}
 
   - name: "products"
     label: "Products"
@@ -32,6 +42,7 @@ collections:
       - {label: "Category", name: "category", widget: "string"}
       - {label: "Specs", name: "specs", widget: "string"}
       - {label: "Price", name: "price", widget: "string"}
+      - {label: "Video", name: "video", widget: "video"}
       - {label: "Body", name: "body", widget: "markdown"}
 
   - name: "news"
@@ -44,7 +55,21 @@ collections:
       - {label: "Date", name: "date", widget: "datetime"}
       - {label: "Category", name: "category", widget: "string"}
       - {label: "Image", name: "image", widget: "image"}
+      - {label: "Video", name: "video", widget: "video"}
       - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "company"
+    label: "Company Info"
+    files:
+      - name: "company"
+        label: "Company Details"
+        file: "src/content/company.md"
+        fields:
+          - {label: "Company Name", name: "companyName", widget: "string"}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Phone", name: "phone", widget: "string"}
+          - {label: "Address", name: "address", widget: "string"}
+          - {label: "Business Hours", name: "businessHours", widget: "text"}
 
   - name: "settings"
     label: "Settings"
@@ -59,7 +84,6 @@ collections:
           - {label: "Contact Email", name: "contactEmail", widget: "string"}
           - {label: "Contact Phone", name: "contactPhone", widget: "string"}
           - {label: "Company Address", name: "companyAddress", widget: "string"}
-
       - name: "homepage"
         label: "Homepage Settings"
         file: "src/content/settings/homepage.md"
@@ -69,16 +93,14 @@ collections:
           - {label: "Hero Description", name: "heroDescription", widget: "text"}
           - {label: "CTA Text", name: "ctaText", widget: "string"}
           - {label: "CTA Link", name: "ctaLink", widget: "string"}
-
       - name: "about"
-        label: "About Page Settings"
+        label: "About Settings"
         file: "src/content/settings/about.md"
         fields:
           - {label: "About Description", name: "aboutDescription", widget: "text"}
           - {label: "Company History", name: "companyHistory", widget: "text"}
           - {label: "Company Values", name: "companyValues", widget: "text"}
           - {label: "Manufacturing Process", name: "manufacturingProcess", widget: "text"}
-
       - name: "products"
         label: "Products Settings"
         file: "src/content/settings/products.md"
@@ -86,7 +108,6 @@ collections:
           - {label: "Products Title", name: "productsTitle", widget: "string"}
           - {label: "Products Description", name: "productsDescription", widget: "text"}
           - {label: "Category Description", name: "categoryDescription", widget: "text"}
-
       - name: "contact"
         label: "Contact Settings"
         file: "src/content/settings/contact.md"
@@ -95,7 +116,6 @@ collections:
           - {label: "Contact Description", name: "contactDescription", widget: "text"}
           - {label: "Form Title", name: "formTitle", widget: "string"}
           - {label: "Info Title", name: "infoTitle", widget: "string"}
-
       - name: "footer"
         label: "Footer Settings"
         file: "src/content/settings/footer.md"
@@ -104,17 +124,24 @@ collections:
           - {label: "Quick Links Title", name: "quickLinksTitle", widget: "string"}
           - {label: "Contact Info Title", name: "contactInfoTitle", widget: "string"}
           - {label: "Copyright", name: "copyright", widget: "string"}
-
       - name: "media"
         label: "Media Settings"
         file: "src/content/settings/media.md"
         fields:
           - {label: "Media Title", name: "mediaTitle", widget: "string"}
           - {label: "Media Description", name: "mediaDescription", widget: "text"}
-
       - name: "technology"
         label: "Technology Settings"
         file: "src/content/settings/technology.md"
         fields:
           - {label: "Technology Title", name: "technologyTitle", widget: "string"}
           - {label: "Technology Description", name: "technologyDescription", widget: "text"}
+
+# Enable editor workflow
+publish_mode: editorial_workflow
+
+# Slug configuration
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"

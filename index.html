@@ -17,6 +17,37 @@
         // 如果是在 admin 路径下且有 reset 参数，重定向到正确的重置密码页面
         window.location.href = '/admin/#/recover';
       }
+      
+      // 修复CMS加载问题
+      if (window.location.pathname.includes('/admin')) {
+        // 确保CMS脚本正确加载
+        window.addEventListener('DOMContentLoaded', function() {
+          // 检查CMS是否已加载
+          if (typeof CMS !== 'undefined') {
+            console.log('CMS already loaded');
+            return;
+          }
+          
+          // 加载CMS脚本
+          const script = document.createElement('script');
+          script.src = 'https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js';
+          script.async = true;
+          
+          script.onload = function() {
+            console.log('CMS script loaded successfully');
+            // 初始化CMS
+            if (typeof CMS !== 'undefined') {
+              CMS.init();
+            }
+          };
+          
+          script.onerror = function() {
+            console.error('Failed to load CMS script');
+          };
+          
+          document.body.appendChild(script);
+        });
+      }
     </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
