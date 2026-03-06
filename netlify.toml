@@ -6,9 +6,7 @@
 [build.environment]
   NODE_VERSION = "18"
   NPM_CONFIG_PRODUCTION = "false"
-  # 确保安装 devDependencies
   YARN_PRODUCTION = "false"
-  # 禁用缓存以避免构建问题
   DISABLE_CACHE = "true"
 
 [[redirects]]
@@ -30,15 +28,12 @@
 [context.branch-deploy]
   environment = { NODE_ENV = "development" }
 
-# 针对 main 分支的配置
 [context.main]
   environment = { NODE_ENV = "production" }
 
-# 添加构建钩子以确保正确的构建顺序
 [build.processing]
   skip_processing = false
 
-# 确保使用正确的 Node.js 版本
 [functions]
   node_bundler = "esbuild"
 ```
