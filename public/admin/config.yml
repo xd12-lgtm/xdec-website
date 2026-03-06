@@ -1,6 +1,12 @@
 backend:
   name: git-gateway
   branch: main
+  commit_messages:
+    create: 'Create {{collection}} "{{slug}}"'
+    update: 'Update {{collection}} "{{slug}}"'
+    delete: 'Delete {{collection}} "{{slug}}"'
+    uploadMedia: '[skip ci] Upload "{{path}}"'
+    deleteMedia: '[skip ci] Delete "{{path}}"'
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
@@ -28,9 +34,8 @@ collections:
           - {label: "Subtitle", name: "subtitle", widget: "string"}
           - {label: "Description", name: "description", widget: "text"}
           - {label: "About Image", name: "about_image", widget: "image"}
-          - {label: "About Video", name: "about_video", widget: "video"}
+          - {label: "About Video", name: "about_video", widget: "string"}
           - {label: "Body", name: "body", widget: "markdown"}
-
   - name: "products"
     label: "Products"
     folder: "src/content/products"
@@ -42,9 +47,8 @@ collections:
       - {label: "Category", name: "category", widget: "string"}
       - {label: "Specs", name: "specs", widget: "string"}
       - {label: "Price", name: "price", widget: "string"}
-      - {label: "Video", name: "video", widget: "video"}
+      - {label: "Video", name: "video", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
-
   - name: "news"
     label: "News"
     folder: "src/content/news"
@@ -55,9 +59,8 @@ collections:
       - {label: "Date", name: "date", widget: "datetime"}
       - {label: "Category", name: "category", widget: "string"}
       - {label: "Image", name: "image", widget: "image"}
-      - {label: "Video", name: "video", widget: "video"}
+      - {label: "Video", name: "video", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
-
   - name: "company"
     label: "Company Info"
     files:
@@ -70,7 +73,6 @@ collections:
           - {label: "Phone", name: "phone", widget: "string"}
           - {label: "Address", name: "address", widget: "string"}
           - {label: "Business Hours", name: "businessHours", widget: "text"}
-
   - name: "settings"
     label: "Settings"
     files:
@@ -94,7 +96,7 @@ collections:
           - {label: "CTA Text", name: "ctaText", widget: "string"}
           - {label: "CTA Link", name: "ctaLink", widget: "string"}
       - name: "about"
-        label: "About Settings"
+        label: "About Page Settings"
         file: "src/content/settings/about.md"
         fields:
           - {label: "About Description", name: "aboutDescription", widget: "text"}
@@ -137,11 +139,4 @@ collections:
           - {label: "Technology Title", name: "technologyTitle", widget: "string"}
           - {label: "Technology Description", name: "technologyDescription", widget: "text"}
 
-# Enable editor workflow
-publish_mode: editorial_workflow
-
-# Slug configuration
-slug:
-  encoding: "ascii"
-  clean_accents: true
-  sanitize_replacement: "-"
+publish_mode: editorial_mode
