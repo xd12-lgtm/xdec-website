@@ -1,140 +1,120 @@
 backend:
   name: git-gateway
   branch: main
-  commit_messages:
-    create: 'Create {{collection}} "{{slug}}"'
-    update: 'Update {{collection}} "{{slug}}"'
-    delete: 'Delete {{collection}} "{{slug}}"'
-    uploadMedia: '[skip ci] Upload "{{path}}"'
-    deleteMedia: '[skip ci] Delete "{{path}}"'
 
-media_folder: "src/content/images/uploads"
+media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
-local_backend: true
-
 collections:
-  - name: "settings"
-    label: "设置"
+  - name: "pages"
+    label: "Pages"
     files:
-      - name: "general"
-        label: "常规设置"
-        file: "src/content/settings/general.md"
+      - name: "home"
+        label: "Home Page"
+        file: "src/content/home.md"
         fields:
-          - {label: "网站标题", name: "siteTitle", widget: "string"}
-          - {label: "网站描述", name: "siteDescription", widget: "text"}
-          - {label: "网站关键词", name: "siteKeywords", widget: "string"}
-          - {label: "联系邮箱", name: "contactEmail", widget: "string"}
-          - {label: "联系电话", name: "contactPhone", widget: "string"}
-          - {label: "公司地址", name: "companyAddress", widget: "string"}
-      - name: "homepage"
-        label: "主页设置"
-        file: "src/content/settings/homepage.md"
-        fields:
-          - {label: "主标题", name: "heroTitle", widget: "string"}
-          - {label: "副标题", name: "heroSubtitle", widget: "string"}
-          - {label: "描述", name: "heroDescription", widget: "text"}
-          - {label: "按钮文本", name: "ctaText", widget: "string"}
-          - {label: "按钮链接", name: "ctaLink", widget: "string"}
-      - name: "about"
-        label: "关于页面设置"
-        file: "src/content/settings/about.md"
-        fields:
-          - {label: "描述", name: "aboutDescription", widget: "text"}
-          - {label: "公司历史", name: "companyHistory", widget: "text"}
-          - {label: "公司价值观", name: "companyValues", widget: "text"}
-          - {label: "制造流程", name: "manufacturingProcess", widget: "text"}
-      - name: "products"
-        label: "产品页面设置"
-        file: "src/content/settings/products.md"
-        fields:
-          - {label: "产品标题", name: "productsTitle", widget: "string"}
-          - {label: "产品描述", name: "productsDescription", widget: "text"}
-          - {label: "分类描述", name: "categoryDescription", widget: "text"}
-      - name: "contact"
-        label: "联系页面设置"
-        file: "src/content/settings/contact.md"
-        fields:
-          - {label: "联系标题", name: "contactTitle", widget: "string"}
-          - {label: "联系描述", name: "contactDescription", widget: "text"}
-          - {label: "表单标题", name: "formTitle", widget: "string"}
-          - {label: "信息标题", name: "infoTitle", widget: "string"}
-      - name: "footer"
-        label: "页脚设置"
-        file: "src/content/settings/footer.md"
-        fields:
-          - {label: "公司信息", name: "companyInfo", widget: "text"}
-          - {label: "快速链接标题", name: "quickLinksTitle", widget: "string"}
-          - {label: "联系信息标题", name: "contactInfoTitle", widget: "string"}
-          - {label: "版权信息", name: "copyright", widget: "string"}
-      - name: "media"
-        label: "媒体中心设置"
-        file: "src/content/settings/media.md"
-        fields:
-          - {label: "媒体标题", name: "mediaTitle", widget: "string"}
-          - {label: "媒体描述", name: "mediaDescription", widget: "text"}
-      - name: "technology"
-        label: "技术页面设置"
-        file: "src/content/settings/technology.md"
-        fields:
-          - {label: "技术标题", name: "technologyTitle", widget: "string"}
-          - {label: "技术描述", name: "technologyDescription", widget: "text"}
-
-  - name: "company"
-    label: "公司信息"
-    file: "src/content/company.md"
-    fields:
-      - {label: "公司名称", name: "companyName", widget: "string"}
-      - {label: "邮箱", name: "email", widget: "string"}
-      - {label: "电话", name: "phone", widget: "string"}
-      - {label: "地址", name: "address", widget: "string"}
-      - {label: "营业时间", name: "businessHours", widget: "text"}
-
-  - name: "home"
-    label: "主页内容"
-    file: "src/content/home.md"
-    fields:
-      - {label: "标题", name: "title", widget: "string"}
-      - {label: "副标题", name: "subtitle", widget: "string"}
-      - {label: "描述", name: "description", widget: "text"}
-      - {label: "按钮文本", name: "button_text", widget: "string"}
-      - {label: "按钮链接", name: "button_link", widget: "string"}
-      - {label: "背景图片", name: "hero_image", widget: "image"}
-
-  - name: "about"
-    label: "关于页面"
-    file: "src/content/about.md"
-    fields:
-      - {label: "标题", name: "title", widget: "string"}
-      - {label: "副标题", name: "subtitle", widget: "string"}
-      - {label: "描述", name: "description", widget: "text"}
-      - {label: "关于图片", name: "about_image", widget: "image"}
-      - {label: "关于视频", name: "about_video", widget: "video-selector"}
-      - {label: "内容", name: "body", widget: "rich-text"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Subtitle", name: "subtitle", widget: "string"}
+          - {label: "Description", name: "description", widget: "text"}
+          - {label: "Button Text", name: "button_text", widget: "string"}
+          - {label: "Button Link", name: "button_link", widget: "string"}
+          - {label: "Hero Image", name: "hero_image", widget: "image"}
+          - {label: "Body", name: "body", widget: "markdown"}
 
   - name: "products"
-    label: "产品"
+    label: "Products"
     folder: "src/content/products"
     create: true
     fields:
-      - {label: "产品名称", name: "title", widget: "string"}
-      - {label: "产品描述", name: "description", widget: "text"}
-      - {label: "产品图片", name: "image", widget: "image"}
-      - {label: "产品分类", name: "category", widget: "string"}
-      - {label: "产品规格", name: "specs", widget: "string"}
-      - {label: "产品价格", name: "price", widget: "string"}
-      - {label: "产品视频", name: "video", widget: "video-selector"}
-      - {label: "内容", name: "body", widget: "rich-text"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Specs", name: "specs", widget: "string"}
+      - {label: "Price", name: "price", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
 
   - name: "news"
-    label: "新闻"
+    label: "News"
     folder: "src/content/news"
     create: true
     fields:
-      - {label: "新闻标题", name: "title", widget: "string"}
-      - {label: "新闻摘要", name: "excerpt", widget: "text"}
-      - {label: "发布日期", name: "date", widget: "datetime"}
-      - {label: "新闻分类", name: "category", widget: "string"}
-      - {label: "新闻图片", name: "image", widget: "image"}
-      - {label: "新闻视频", name: "video", widget: "video-selector"}
-      - {label: "内容", name: "body", widget: "rich-text"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Excerpt", name: "excerpt", widget: "text"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "settings"
+    label: "Settings"
+    files:
+      - name: "general"
+        label: "General Settings"
+        file: "src/content/settings/general.md"
+        fields:
+          - {label: "Site Title", name: "siteTitle", widget: "string"}
+          - {label: "Site Description", name: "siteDescription", widget: "text"}
+          - {label: "Site Keywords", name: "siteKeywords", widget: "string"}
+          - {label: "Contact Email", name: "contactEmail", widget: "string"}
+          - {label: "Contact Phone", name: "contactPhone", widget: "string"}
+          - {label: "Company Address", name: "companyAddress", widget: "string"}
+
+      - name: "homepage"
+        label: "Homepage Settings"
+        file: "src/content/settings/homepage.md"
+        fields:
+          - {label: "Hero Title", name: "heroTitle", widget: "string"}
+          - {label: "Hero Subtitle", name: "heroSubtitle", widget: "string"}
+          - {label: "Hero Description", name: "heroDescription", widget: "text"}
+          - {label: "CTA Text", name: "ctaText", widget: "string"}
+          - {label: "CTA Link", name: "ctaLink", widget: "string"}
+
+      - name: "about"
+        label: "About Page Settings"
+        file: "src/content/settings/about.md"
+        fields:
+          - {label: "About Description", name: "aboutDescription", widget: "text"}
+          - {label: "Company History", name: "companyHistory", widget: "text"}
+          - {label: "Company Values", name: "companyValues", widget: "text"}
+          - {label: "Manufacturing Process", name: "manufacturingProcess", widget: "text"}
+
+      - name: "products"
+        label: "Products Settings"
+        file: "src/content/settings/products.md"
+        fields:
+          - {label: "Products Title", name: "productsTitle", widget: "string"}
+          - {label: "Products Description", name: "productsDescription", widget: "text"}
+          - {label: "Category Description", name: "categoryDescription", widget: "text"}
+
+      - name: "contact"
+        label: "Contact Settings"
+        file: "src/content/settings/contact.md"
+        fields:
+          - {label: "Contact Title", name: "contactTitle", widget: "string"}
+          - {label: "Contact Description", name: "contactDescription", widget: "text"}
+          - {label: "Form Title", name: "formTitle", widget: "string"}
+          - {label: "Info Title", name: "infoTitle", widget: "string"}
+
+      - name: "footer"
+        label: "Footer Settings"
+        file: "src/content/settings/footer.md"
+        fields:
+          - {label: "Company Info", name: "companyInfo", widget: "text"}
+          - {label: "Quick Links Title", name: "quickLinksTitle", widget: "string"}
+          - {label: "Contact Info Title", name: "contactInfoTitle", widget: "string"}
+          - {label: "Copyright", name: "copyright", widget: "string"}
+
+      - name: "media"
+        label: "Media Settings"
+        file: "src/content/settings/media.md"
+        fields:
+          - {label: "Media Title", name: "mediaTitle", widget: "string"}
+          - {label: "Media Description", name: "mediaDescription", widget: "text"}
+
+      - name: "technology"
+        label: "Technology Settings"
+        file: "src/content/settings/technology.md"
+        fields:
+          - {label: "Technology Title", name: "technologyTitle", widget: "string"}
+          - {label: "Technology Description", name: "technologyDescription", widget: "text"}
