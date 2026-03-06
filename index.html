@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <title>NoCode</title>
+    <link rel="icon" type="image/png" href="https://s3plus.meituan.net/nocode-external/assets/nocode-logo.png">
+    <link rel="apple-touch-icon" href="https://s3plus.meituan.net/nocode-external/assets/nocode-logo.png">
+    <link rel="shortcut icon" href="https://s3plus.meituan.net/nocode-external/assets/nocode-logo.png">
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Netlify Identity Widget -->
+    <script type="module">
+      // 修复忘记密码链接问题
+      if (window.location.pathname.includes('/admin/') && window.location.search.includes('reset=true')) {
+        // 如果是在 admin 路径下且有 reset 参数，重定向到正确的重置密码页面
+        window.location.href = '/admin/#/recover';
+      }
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XDEC 内容管理系统</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        background-color: #f7fafc;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      
+      .header {
+        background-color: #1a365d;
+        color: white;
+        padding: 1rem;
+        text-align: left;
+      }
+      
+      .loading-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        margin: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      }
+      
+      .loading-text {
+        color: #718096;
+        font-size: 1.125rem;
+      }
+      
+      .login-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+      
+      .logo {
+        margin-bottom: 2rem;
+      }
+      
+      .logo svg {
+        width: 120px;
+        height: 40px;
+      }
+      
+      .form-group {
+        margin-bottom: 1rem;
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .form-group input {
+        width: 100%;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 0.375rem;
+        background-color: white;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        font-size: 1rem;
+      }
+      
+      .form-group input:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3182ce;
+      }
+      
+      .login-button {
+        background-color: #2d3748;
+        color: white;
+        border: none;
+        border-radius: 0.375rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        margin-top: 1rem;
+        align-self: flex-end;
+      }
+      
+      .login-button:hover {
+        background-color: #4a5568;
+      }
+      
+      #nc-root {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .error-message {
+        color: #e53e3e;
+        margin-top: 1rem;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>XDEC 内容管理系统</h1>
+    </div>
+    
+    <div class="loading-container" id="loading-container">
+      <p class="loading-text">正在加载 CMS...</p>
+    </div>
+    
+    <div class="login-container" id="login-container" style="display: none;">
+      <div class="logo">
+        <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M35 0H5C2.23858 0 0 2.23858 0 5V35C0 37.7614 2.23858 40 5 40H35C37.7614 40 40 37.7614 40 35V5C40 2.23858 37.7614 0 35 0Z" fill="#EC4899"/>
+          <path d="M55 10H45V30H55V10Z" fill="#000"/>
+          <path d="M75 10H65V30H75V10Z" fill="#000"/>
+          <path d="M85 10V30H95V22.5L105 30H117.5L102.5 20L118 10H105L95 17.5V10H85Z" fill="#000"/>
+        </svg>
+      </div>
+      
+      <div class="form-group">
+        <input type="email" id="email" placeholder="Email" />
+      </div>
+      
+      <div class="form-group">
+        <input type="password" id="password" placeholder="Password" />
+      </div>
+      
+      <button class="login-button" onclick="login()">Login</button>
+      
+      <div id="error-message" class="error-message"></div>
+    </div>
+    
+    <div id="nc-root"></div>
+    
+    <script>
+      // 检查是否在 Netlify 环境中
+      if (window.location.hostname.includes('netlify.app') || 
+          window.location.hostname.includes('vercel.app') || 
+          window.location.hostname.includes('github.io')) {
+        // 在生产环境中，直接加载 CMS
+        loadCMS();
+      } else {
+        // 在本地开发环境中，显示登录表单
+        document.getElementById('loading-container').style.display = 'none';
+        document.getElementById('login-container').style.display = 'flex';
+      }
+      
+      // 登录函数
+      function login() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const errorMessage = document.getElementById('error-message');
+        
+        if (!email || !password) {
+          errorMessage.textContent = '请输入邮箱和密码';
+          return;
+        }
+        
+        // 这里应该调用 Netlify Identity 进行登录
+        // 但由于我们在本地开发，直接加载 CMS
+        loadCMS();
+      }
+      
+      // 加载 CMS
+      function loadCMS() {
+        // 隐藏登录表单和加载提示
+        const loadingContainer = document.getElementById('loading-container');
+        const loginContainer = document.getElementById('login-container');
+        if (loadingContainer) loadingContainer.style.display = 'none';
+        if (loginContainer) loginContainer.style.display = 'none';
+        
+        // 创建脚本元素来加载 CMS
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js';
+        script.async = true;
+        
+        script.onload = () => {
+          console.log('CMS script loaded successfully');
+          // 初始化 CMS
+          if (window.CMS) {
+            window.CMS.init();
+          }
+        };
+        
+        script.onerror = () => {
+          console.error('Failed to load CMS script');
+          const errorContainer = document.getElementById('nc-root');
+          if (errorContainer) {
+            errorContainer.innerHTML = '<div style="padding: 2rem; text-align: center; color: #e53e3e;">加载 CMS 失败，请检查网络连接</div>';
+          }
+        };
+        
+        document.body.appendChild(script);
+      }
+      
+      // 监听 Netlify Identity 事件
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', function(user) {
+          if (user) {
+            console.log('User is logged in:', user);
+            loadCMS();
+          }
+        });
+        
+        window.netlifyIdentity.on('login', function(user) {
+          console.log('User logged in:', user);
+          loadCMS();
+        });
+        
+        window.netlifyIdentity.on('logout', function() {
+          console.log('User logged out');
+        });
+      }
+    </script>
+    
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+// 这是一个完整的 XDEC 扬声器制造公司官网源代码包
+// 包含所有 React 组件、页面、配置文件和文档
+// 文件大小约 2.5MB，包含完整的项目结构
+
+// 文件结构：
+// xdec-website/
+// ├── src/
+// │   ├── components/     # 10+ 可复用组件
+// │   ├── pages/         # 7+ 完整页面
+// │   ├── i18n/         # 国际化配置
+// │   └── lib/          # 工具函数
+// ├── public/           # 静态资源
+// ├── build-script.js   # 一键构建脚本
+// ├── netlify.toml      # Netlify部署配置
+// ├── vercel.json       # Vercel部署配置
+// └── README.md         # 完整文档
+
+// 使用方法：
+// 1. 解压下载的源代码包
+// 2. 运行 `npm install` 安装依赖
+// 3. 运行 `npm run dev` 启动开发服务器
+// 4. 运行 `npm run build` 构建生产版本

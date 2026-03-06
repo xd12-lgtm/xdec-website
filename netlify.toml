@@ -1,0 +1,37 @@
+[build]
+  publish = "build"
+  command = "npm install && npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+[identity]
+  enabled = true
+  CORS_origins = ["*"]
+
+[git_gateway]
+  enabled = true
+
+# 添加分支配置
+[context.production]
+  environment = { NODE_ENV = "production" }
+
+[context.deploy-preview]
+  environment = { NODE_ENV = "development" }
+
+[context.branch-deploy]
+  environment = { NODE_ENV = "development" }
+
+# 针对 main 分支的配置
+[context.main]
+  environment = { NODE_ENV = "production" }
