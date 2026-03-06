@@ -1,3 +1,4 @@
+```js
 #!/usr/bin/env node
 
 const fs = require('fs');
@@ -9,7 +10,7 @@ console.log('🚀 开始构建 XDEC 官网...');
 try {
   // 安装依赖
   console.log('📦 安装依赖...');
-  execSync('npm install', { stdio: 'inherit' });
+  execSync('npm install --legacy-peer-deps', { stdio: 'inherit' });
   
   // 构建项目
   console.log('🔨 构建项目...');
@@ -22,3 +23,4 @@ try {
   console.error('❌ 构建失败:', error.message);
   process.exit(1);
 }
+```

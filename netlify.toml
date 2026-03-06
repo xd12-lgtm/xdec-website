@@ -1,6 +1,7 @@
+```toml
 [build]
   publish = "build"
-  command = "npm install && npm run build"
+  command = "npm install --legacy-peer-deps && npm run build"
 
 [build.environment]
   NODE_VERSION = "18"
@@ -35,3 +36,4 @@
 # 针对 main 分支的配置
 [context.main]
   environment = { NODE_ENV = "production" }
+```
