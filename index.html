@@ -18,12 +18,12 @@
         window.location.href = '/admin/#/recover';
       }
       
-      // 修复CMS加载问题
+      // 修复CMS加载问题 - 移除#符号相关逻辑
       if (window.location.pathname.includes('/admin')) {
         // 确保CMS脚本正确加载
         window.addEventListener('DOMContentLoaded', function() {
           // 检查CMS是否已加载
-          if (typeof CMS !== 'undefined') {
+          if (window.CMS && window.CMS.init) {
             console.log('CMS already loaded');
             return;
           }
@@ -36,8 +36,8 @@
           script.onload = function() {
             console.log('CMS script loaded successfully');
             // 初始化CMS
-            if (typeof CMS !== 'undefined') {
-              CMS.init();
+            if (window.CMS) {
+              window.CMS.init();
             }
           };
           
