@@ -6,8 +6,6 @@
 [build.environment]
   NODE_VERSION = "18"
   NPM_CONFIG_PRODUCTION = "false"
-  YARN_PRODUCTION = "false"
-  DISABLE_CACHE = "true"
 
 [[redirects]]
   from = "/*"
@@ -18,22 +16,4 @@
   from = "/admin/*"
   to = "/admin/index.html"
   status = 200
-
-[context.production]
-  environment = { NODE_ENV = "production" }
-
-[context.deploy-preview]
-  environment = { NODE_ENV = "development" }
-
-[context.branch-deploy]
-  environment = { NODE_ENV = "development" }
-
-[context.main]
-  environment = { NODE_ENV = "production" }
-
-[build.processing]
-  skip_processing = false
-
-[functions]
-  node_bundler = "esbuild"
 ```
